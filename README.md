@@ -1,5 +1,5 @@
 # Read Me
-Demo : http://eksa-asset-management.herokuapp.com
+Demo : <a href="http://eksa-asset-management.herokuapp.com" target="blank">http://eksa-asset-management.herokuapp.com</a>
 Admin (username : admin@admin.com, password : password)
 User (username : user@user.com, password : password)
 
