@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include partials/metahead %>
+  <body>
+    <div id="wrapper">
+      <!-- Navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <%- include partials/header %>
+        <%- include partials/sidebar %>
+      </nav>
+      <!-- End: Navigation -->
+
+      <!-- Page Content -->
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <!-- Body Content -->
+              <%- include dashboard %>
+              <!-- End: Body Content -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End: Page Content -->
+    </div> <!-- /#wrapper -->
+
+    <%- include partials/jsfooter %>
+  </body>
+</html>

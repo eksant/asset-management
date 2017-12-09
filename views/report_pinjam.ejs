@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include partials/metahead %>
+  <body>
+    <div id="wrapper">
+      <!-- Navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <%- include partials/header %>
+        <%- include partials/sidebar %>
+      </nav>
+      <!-- End: Navigation -->
+
+      <!-- Page Content -->
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <h1 class="page-header"><%= title %></h1>
+
+              
+
+              <div class="dataTable_wrapper">
+                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Email User</th>
+                      <th>Nama Barang</th>
+                      <th>Quantity</th>
+                      <th>Tanggal Pinjam</th>
+                      <th>Approval</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for (let i = 0; i < reqBarang.length; i++) { %>
+                      <tr class="odd gradeX">
+                        <%
+                          var status_approval = ''
+                          if (reqBarang[i].approval == 0) {
+                            status_approval = 'Waiting'
+                          } else if (reqBarang[i].approval == 1) {
+                            status_approval = 'Approved'
+                          } else if (reqBarang[i].approval == 3) {
+                            status_approval = 'Rejected'
+                          }
+                        %>
+                        <td><%= i + 1 %></td>
+                        <td><%= reqBarang[i].User.email %></td>
+                        <td><%= reqBarang[i].Barang.nama_barang %></td>
+                        <td align="center"><%= reqBarang[i].quantity %></td>
+                        <td><%= reqBarang[i].tgl_pinjam.toLocaleDateString() %></td>
+                        <td><%= status_approval %></td>
+                      </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End: Page Content -->
+    </div> <!-- /#wrapper -->
+
+    <%- include partials/jsfooter %>
+  </body>
+</html>

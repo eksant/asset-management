@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include partials/metahead %>
+  <body class="login">
+    <div class="logo">
+  		<img src="../public/images/logo.png" alt="logo" height="42" width="42" />
+  		<%= title %>
+  	</div>
+
+    <div class="box">
+      <div class="content">
+        <form action="/login/checkUser" method="post" class="form-vertical login-form">
+          <h3 class="form-title">Sign In to your Account</h3>
+          <!-- Error Message -->
+          <% if (errMessage) { %>
+  				<div class="alert fade in alert-danger">
+  					<i class="icon-remove close" data-dismiss="alert"></i>
+  					<%= errMessage %>
+  				</div>
+          <% } %>
+
+          <div class="form-group input-group">
+  					<span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+  					<input type="email" name="email" value="" class="form-control" placeholder="Email" autofocus="autofocus" required />
+  				</div>
+          <div class="form-group input-group">
+  					<span class="input-group-addon"><i class="fa fa-key"></i></span>
+  					<input type="password" name="password" value="" class="form-control" placeholder="Password" autofocus="autofocus" required />
+  				</div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <button type="submit" class="submit btn btn-primary pull-right">Login</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <%- include partials/jsfooter %>
+  </body>
+</html>

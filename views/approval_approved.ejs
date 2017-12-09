@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include partials/metahead %>
+
+    <body>
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <%- include partials/header %>
+                    <%- include partials/sidebar %>
+            </nav>
+            <!-- End: Navigation -->
+            <!-- Page Content -->
+            <div id="page-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <h1 class="page-header">Approved
+                                <%= title %>
+                            </h1>
+                            <!-- Alert Message -->
+                            <% if (errMessage) { %>
+                                <div class="alert alert-danger alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <%= errMessage %>
+                                </div>
+                                <% } %>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form action="/approval/approved/<%=requestBarang.id%>" method="post" role="form">
+                                                <div class="form-group">
+                                                    <label>User</label>
+                                                    <%=requestBarang.User.email%>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Barang Request</label>
+                                                    <%=requestBarang.Barang.nama_barang%>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Tanggal Kembali</label>
+                                                    <input name="tgl_kembali" type="date" placeholder="Tanggal Kembali.." class="form-control"
+                                                        required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Lokasi Barang</label>
+                                                    <select name='tempat' class="form-control">
+                                                        <option value=''>--SELECT--</option>
+                                                        <% tempatBarang.forEach(function(data, idx) { %>
+                                                            <option value='<%=data.id%>'>
+                                                                <%=data.Tempat.nama_tempat %> ada <%=data.quantity%> Buah
+                                                            </option>
+                                                            <% }) %>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                                <a href="/barang" class="btn btn-default">Cancel</a>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Page Content -->
+        </div>
+        <!-- /#wrapper -->
+
+        <%- include partials/jsfooter %>
+    </body>
+
+</html>

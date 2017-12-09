@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include partials/metahead %>
+  <body>
+    <div id="wrapper">
+      <!-- Navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <%- include partials/header %>
+        <%- include partials/sidebar %>
+      </nav>
+      <!-- End: Navigation -->
+      <%
+        var header = 'Add'
+        var action = 'add'
+        if(barang){
+          header = 'Edit'
+          action = `edit/${barang.id}`
+        }
+      %>
+      <!-- Page Content -->
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <h1 class="page-header"><%=header%> <%= title %></h1>
+              <!-- Alert Message -->
+              <% if (errMessage) { %>
+              <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <%= errMessage %>
+              </div>
+              <% } %>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <form action="/barang/<%=action%>" method="post" role="form">
+                    <div class="form-group">
+                      <label>Nama Barang</label>
+                      <input name="nama_barang" value="<%= barang.nama_barang %>" type="text" placeholder="Nama Barang" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Stock</label>
+                      <input name="stock" value="<%= barang.stock %>" type="text" placeholder="Stock" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/barang" class="btn btn-default">Cancel</a>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End: Page Content -->
+    </div> <!-- /#wrapper -->
+
+    <%- include partials/jsfooter %>
+  </body>
+</html>

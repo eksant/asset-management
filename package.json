@@ -1,0 +1,22 @@
+{
+  "name": "asset-management",
+  "version": "1.0.0",
+  "description": "basic application asset management",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eksoct@yahoo.com",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "pg": "^7.4.0",
+    "sequelize": "^4.26.0",
+    "sequelize-cli": "^3.2.0"
+  }
+}

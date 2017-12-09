@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include partials/metahead %>
+  <body>
+    <div id="wrapper">
+      <!-- Navigation -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <%- include partials/header %>
+        <%- include partials/sidebar %>
+      </nav>
+      <!-- End: Navigation -->
+
+      <%
+        var header = 'Add'
+        var action = 'add'
+        if (pemesanan) {
+          header = 'Edit'
+          action = `edit/${pemesanan.id}`
+        }
+      %>
+
+      <!-- Page Content -->
+      <div id="page-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <h1 class="page-header"><%= header %> <%= title %></h1>
+              <!-- Alert Message -->
+              <% if (errMessage) { %>
+              <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <%= errMessage %>
+              </div>
+              <% } %>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <form action="/pemesanan/<%= action %>" method="post" role="form">
+                    <div class="form-group">
+                      <label>Email User</label> : <%= userSession.email%>
+                    </div>
+                    <div class="form-group">
+                      <label>Nama Barang</label>
+                      <select name="barang" class="form-control" required>
+                        <option value="0">-- Select One --</option>
+                        <% barang.forEach((itemBarang) => { %>
+                          <option <% if (itemBarang.id == pemesanan.BarangId) { %> selected <% } %> value="<%= itemBarang.id%>"><%= itemBarang.nama_barang%></option>
+                        <% })  %>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Quantity</label>
+                      <input name="quantity" value="<%= pemesanan.quantity %>" type="number" placeholder="Quantity.." class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Tanggal Pinjam</label>
+                      <input name="tgl_pinjam" value="<%= pemesanan.tgl_pinjam %>" type="date" placeholder="Tanggal Pinjam.." class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="/pemesanan" class="btn btn-default">Cancel</a>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End: Page Content -->
+    </div> <!-- /#wrapper -->
+
+    <%- include partials/jsfooter %>
+  </body>
+</html>

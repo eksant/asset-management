@@ -1,0 +1,41 @@
+<div class="navbar-default sidebar" role="navigation">
+  <div class="sidebar-nav navbar-collapse">
+    <ul class="nav" id="side-menu">
+      <li <% if (sidebar == 'dashboard') { %> class="active" <% } %>><a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+      <!-- Master Data -->
+      <% if (userSession.role === 'admin') { %>
+        <li>
+          <a href="#"><i class="fa fa-list-ul fa-fw"></i> Master Data<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li <% if (sidebar == 'user') { %> class="active" <% } %>><a href="/user"><i class="fa fa-table fa-fw"></i> User</a></li>
+            <li <% if (sidebar == 'barang') { %> class="active" <% } %>><a href="/barang"><i class="fa fa-table fa-fw"></i> Barang</a></li>
+            <li <% if (sidebar == 'tempat') { %> class="active" <% } %>><a href="/tempat"><i class="fa fa-table fa-fw"></i> Tempat</a></li>
+            <li <% if (sidebar == 'asset') { %> class="active" <% } %>><a href="/tempatbarang"><i class="fa fa-table fa-fw"></i> Asset</a></li>
+          </ul>
+        </li>
+      <% } %>
+
+      <!-- Transaksi Data -->
+      <li>
+        <a href="#"><i class="fa fa-list-ul fa-fw"></i> Menu Transaksi<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li <% if (sidebar == 'pemesanan') { %> class="active" <% } %>><a href="/pemesanan"><i class="fa fa-table fa-fw"></i> Pinjam Barang</a></li>
+          <% if (userSession.role === 'admin') { %>
+          <li <% if (sidebar == 'approval') { %> class="active" <% } %>><a href="/approval"><i class="fa fa-table fa-fw"></i> Approval Pinjam</a></li>
+          <% } %>
+        </ul>
+      </li>
+
+      <!-- Data Laporan -->
+      <li>
+        <a href="#"><i class="fa fa-list-ul fa-fw"></i> Data Laporan<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li <% if (sidebar == 'report_pinjam') { %> class="active" <% } %>><a href="/report_pinjam">Pinjam Barang</a></li>
+          <% if (userSession.role === 'admin') { %>
+          <li <% if (sidebar == 'report_history') { %> class="active" <% } %>><a href="/report_history">History Asset</a></li>
+          <% } %>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

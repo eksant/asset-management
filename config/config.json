@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "zlxgkuwm",
+    "password": "FHd3Vk-vOnvaP9wXtma0bcGjoQsqN--c",
+    "database": "zlxgkuwm",
+    "host": "baasu.db.elephantsql.com",
+    "dialect": "postgres"
+  }
+}
