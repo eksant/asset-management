@@ -13,7 +13,7 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "express-session": "^1.15.6",
     "pg": "^7.4.0",
     "sequelize": "^4.26.0",
